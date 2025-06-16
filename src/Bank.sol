@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.13;
+
 import {IBank} from "./interfaces/IBank.sol";
 
 // Abstract contract
@@ -56,14 +57,7 @@ abstract contract Bank is IBank {
         emit SecretStored(msg.sender);
     }
 
-    function getSecret()
-        external
-        view
-        override
-        onlyOwner
-        notLocked
-        returns (string memory)
-    {
+    function getSecret() external view override onlyOwner notLocked returns (string memory) {
         return depositBox[msg.sender].secret;
     }
 
